@@ -43,21 +43,16 @@ export default {
         message: 'Unknown error.'
     }),
     watch: {
-        imageIds: function () {
+        imageIds: async function () {
             try {
                 const parsedData = JSON.parse(this.imageIds)
                 this.invalid = false
 
-                imageService
-                    .fetch(parsedData.data)
-                    .then((r) => (this.fetchedImages = r))
-                    .catch(
-                        (r) => (this.invalid = true),
-                        (this.message = constants.INVALID_SCHEMA)
-                    )
-            } catch (_) {
+                const result = await imageService.fetch(parsedData.data)
+                this.fetchedImages = result
+            } catch (r) {
+                this.message = r.message
                 this.invalid = true
-                this.message = constants.NOT_JSON
             }
         }
     },

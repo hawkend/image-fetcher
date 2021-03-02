@@ -1,4 +1,5 @@
 import constants from '../constants.js'
+import axios from 'axios'
 
 export class ImageService {
 
@@ -7,13 +8,11 @@ export class ImageService {
     }
 
     async fetch(ids) {
-        const urls = this.mapToUrl(ids)
-        const requests = urls.map(url => fetch(url))
-        console.log(urls)
-
         try {
+            const urls = this.mapToUrl(ids)
+            const requests = urls.map(url => axios.get(url))
             const responses = await Promise.all(requests)
-            const result = await Promise.all(responses.map(r => r.json()))
+            const result = responses.map(r => r.data)
 
             return result.map(({ num, img, title, alt }) => ({
                 id: num,
@@ -22,7 +21,7 @@ export class ImageService {
                 alt
             }))
         } catch (_) {
-            return constants.INVALID_SCHEMA
+            throw new Error(constants.NOT_JSON)
         }
     }
 

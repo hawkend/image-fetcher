@@ -6,7 +6,8 @@
   "scripts": {
     "build-prod": "webpack --config webpack.config.prod.js",
     "build-dev": "webpack --config webpack.config.dev.js",
-    "dev": "webpack serve --config webpack.config.dev.js"
+    "dev": "webpack serve --config webpack.config.dev.js",
+    "test": "jest"
   },
   "author": "aurielmp",
   "license": "MIT",
@@ -17,6 +18,7 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.1.1",
     "html-webpack-plugin": "^5.2.0",
+    "jest": "^26.6.3",
     "regenerator-runtime": "^0.13.7",
     "vue-loader": "^15.9.6",
     "vue-style-loader": "^4.1.2",
@@ -26,6 +28,10 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "vue": "^2.6.12"
+  },
+  "jest": {
+    "setupFilesAfterEnv": ["./setupTests.js"]
   }
 }
