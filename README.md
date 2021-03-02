@@ -24,6 +24,13 @@ $ yarn
 $ yarn run dev
 ```
 
+The application require a JSON file with data key which has a list of IDs, e.g.:
+```json
+{
+    "data": [614, 615, 616, 617, 618, 619, 620]
+}
+```
+
 ## Available commands
 | Command name | Execution                    | Description                                           |
 |--------------|------------------------------|-------------------------------------------------------|
