@@ -5,7 +5,7 @@ require('regenerator-runtime/runtime')
 
 
 module.exports = {
-    mode: 'productiont',
+    mode: 'production',
     entry: './src/index.js',
     output: {
         path: path.join(__dirname, './dist'),
